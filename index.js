@@ -5,6 +5,7 @@
 */
 
 const input = document.getElementById("input-el")
+let errorMsg = document.querySelector(".hero-container p")
 const conversionBtn = document.getElementById("convert-btn")
 let lengthText = document.querySelector("#length p")
 let volumeText = document.querySelector("#volume p")
@@ -12,35 +13,59 @@ let massText = document.querySelector("#mass p")
 
 
 conversionBtn.addEventListener("click", function(){
+    lengthText.textContent= ""
+    volumeText.textContent = ""
+    massText.textContent = ""
     let value = input.value
     console.log(parseInt(value))
     if(parseInt(value)) //ensures there is a number passed in
     {
-        render(lengthText)
+        errorMsg.textContent = ""
+        renderLength(value)
+        renderVolume(value)
+        renderMass(value)
     }
     else{
-        console.log("not number") //replace with msg to user between box and button
+        errorMsg.textContent = "please enter in a number" 
     }
 
 })
 
-function render(conversionText)
+function renderLength(value)
 {
-    conversionText.innerHTML = `test`
+    let conversion = 3.281;
+    lengthText.innerHTML = `
+        ${value} meters = ${metricToImperial(value, conversion)} feet |
+         ${value} feet = ${imperialToMetric(value, conversion)} meters`
 }
 
-function metricToImperial(conversion)
+function renderVolume(value)
 {
-    let finalNum = input * conversion
-    finalNum = finalNum.toFixed(3)
-    console.log(`metric to imperial: ${finalNum}`)
-
+    let conversion = 2.204;
+    massText.innerHTML = `
+        ${value} liters = ${metricToImperial(value, conversion)} gallons |
+         ${value} gallons = ${imperialToMetric(value, conversion)} liters`
+}
+function renderMass(value)
+{
+    let conversion = 0.264;
+    volumeText.innerHTML = `
+        ${value} kilos = ${metricToImperial(value, conversion)} pounds |
+         ${value} pounds = ${imperialToMetric(value, conversion)} kilos`
 }
 
-function imperialToMetric(conversion)
+function metricToImperial(value, conversion)
 {
-    let finalNum = input / conversion
+    let finalNum = value * conversion
     finalNum = finalNum.toFixed(3)
     console.log(`metric to imperial: ${finalNum}`)
-
+    return finalNum
+}
+//rounding error, fix later
+function imperialToMetric(value, conversion)
+{
+    let finalNum = value / conversion
+    finalNum = finalNum.toFixed(3)
+    console.log(`metric to imperial: ${finalNum}`)
+    return finalNum
 }
