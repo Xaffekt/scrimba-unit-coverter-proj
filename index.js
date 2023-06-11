@@ -33,7 +33,7 @@ conversionBtn.addEventListener("click", function(){
 
 function renderLength(value)
 {
-    let conversion = 3.281;
+    let conversion = 3.281
     lengthText.innerHTML = `
         ${value} meters = ${metricToImperial(value, conversion)} feet |
          ${value} feet = ${imperialToMetric(value, conversion)} meters`
@@ -41,15 +41,15 @@ function renderLength(value)
 
 function renderVolume(value)
 {
-    let conversion = 2.204;
-    massText.innerHTML = `
+    let conversion = 0.264
+    volumeText.innerHTML = `
         ${value} liters = ${metricToImperial(value, conversion)} gallons |
          ${value} gallons = ${imperialToMetric(value, conversion)} liters`
 }
 function renderMass(value)
 {
-    let conversion = 0.264;
-    volumeText.innerHTML = `
+    let conversion = 2.204
+    massText.innerHTML = `
         ${value} kilos = ${metricToImperial(value, conversion)} pounds |
          ${value} pounds = ${imperialToMetric(value, conversion)} kilos`
 }
@@ -61,7 +61,7 @@ function metricToImperial(value, conversion)
     console.log(`metric to imperial: ${finalNum}`)
     return finalNum
 }
-//rounding error, fix later
+//rounding errors
 function imperialToMetric(value, conversion)
 {
     let finalNum = value / conversion

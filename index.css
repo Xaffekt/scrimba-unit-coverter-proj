@@ -3,14 +3,12 @@
     body background: #1F2937
     border: #B295FF
     text: #CCC1FF
-
 */
 
 body {
     display: flex;
     flex-direction: column;
     text-align: center;
-    min-height: auto;
     margin: 0;
     font-family: Inter, arial, sans-serif;
     color: white;
